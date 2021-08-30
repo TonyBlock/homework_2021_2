@@ -17,4 +17,28 @@ QUnit.module('Тестируем функцию anagram', function () {
 
 		assert.deepEqual(anagram(input), output);
 	});
+
+	QUnit.test('Все слова - одна группа анаграмм', function (assert) {
+		const input = [
+			'пакт', 'такп',
+			'ктап', 'ткпа'
+		];
+
+		const output = [
+			['ктап', 'пакт', 'такп', 'ткпа']
+		];
+
+		assert.deepEqual(anagram(input), output);
+	});
+
+	QUnit.test('Отсутствуют анаграммы', function (assert) {
+		const input = [
+			'технопарк', 'бауманка',
+			'фронтенд', 'javascript'
+		];
+
+		const output = [];
+
+		assert.deepEqual(anagram(input), output);
+	});
 });
