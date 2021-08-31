@@ -9,12 +9,13 @@
  */
 
 const anagram = input => {
-   if (!(input instanceof Array && input.find(item => typeof item != 'string') === undefined))
+   if (!(Array.isArray(input) && input.some(elem => typeof elem != 'string')) {
       return null;
+   }
 
    const outputMap = new Map();
 
-   input.forEach((item, input) => {
+   input.forEach(item => {
       const keyWord = item.split('').sort().join('');
       if (outputMap.has(keyWord))
          outputMap.set(keyWord, [...outputMap.get(keyWord), item]);
@@ -22,5 +23,5 @@ const anagram = input => {
          outputMap.set(keyWord, [item]);
    });
 
-   return [...outputMap.values()].filter(item => item.sort().length > 1).sort();
+   return [...outputMap.values()].filter(item => item.length > 1).map(item => item.sort()).sort();
 };
