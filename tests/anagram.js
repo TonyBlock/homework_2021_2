@@ -41,4 +41,23 @@ QUnit.module('Тестируем функцию anagram', function () {
 
 		assert.deepEqual(anagram(input), output);
 	});
+
+	QUnit.test('На вход подаётся не массив, а число', function (assert) {
+		const input = 7;
+
+		const output = null;
+
+		assert.deepEqual(anagram(input), output);
+	});
+
+	QUnit.test('На вход подаётся массив, где не все элементы - строки', function (assert) {
+		const input = [
+			'сентябрь', 'осень',
+			404, 'учёба'
+		];
+
+		const output = null;
+
+		assert.deepEqual(anagram(input), output);
+	});
 });

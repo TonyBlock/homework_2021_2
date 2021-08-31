@@ -1,22 +1,26 @@
 'use strict';
 
-const anagram = function (input) {
-   let outputMap = new Map()
+/**
+ * @description this function takes an array of words and group it into groups of anagram words.
+ * Output array must contain only groups of two or more words. Groups and the output array must be sorted.
+ * If input data has wrong type, the function returns null.
+ * @param {String[]} input - array of words
+ * @returns {String[][]} sorted array of anagrams
+ */
 
-   for (let word of input) {
-      let keyWord = word.split('').sort().join('')
+const anagram = input => {
+   if (!(input instanceof Array && input.find(item => typeof item != 'string') === undefined))
+      return null;
+
+   const outputMap = new Map();
+
+   input.forEach((item, input) => {
+      const keyWord = item.split('').sort().join('');
       if (outputMap.has(keyWord))
-         outputMap.set(keyWord, outputMap.get(keyWord).concat(word))
+         outputMap.set(keyWord, [...outputMap.get(keyWord), item]);
       else
-         outputMap.set(keyWord, [word])
-   }
-
-   outputMap.forEach((value, key, map) => {
-      if (value.length > 1)
-         value.sort()
-      else
-         map.delete(key)
+         outputMap.set(keyWord, [item]);
    });
 
-   return Array.from(outputMap.values()).sort();
+   return [...outputMap.values()].filter(item => item.sort().length > 1).sort();
 };
