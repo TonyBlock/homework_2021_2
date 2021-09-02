@@ -4,8 +4,8 @@
  * This function takes an array of words and group it into groups of anagram words.
  * Output array must contain only groups of two or more words. Groups and the output array must be sorted.
  * If input data has wrong type, the function returns null.
- * @param {String[]} input - array of words
- * @returns {String[][]} sorted array of anagrams
+ * @param {string[]} input - array of words
+ * @returns {string[][]} sorted array of anagrams
  */
 
 const anagram = input => {
